@@ -1,8 +1,55 @@
 @import url('https://rsms.me/inter/inter.css');
 
-html{
+body{
+    height: 100%;
+    margin: 0;
+
     background-color: #111111;
 
     font-family: "Inter", sans-serif;
     color: white;
 }
+
+main{
+    display: grid;
+    grid-template-columns: repeat(auto, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto, minmax(250px, 1fr));
+}
+
+.text-wrapper{
+    width: 184px;
+    height: 88px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+
+    margin: 30px;
+}
+
+.name {
+    width: 183px;
+    height: 36px;
+    overflow: visible;
+    font-family: "Inter-Bold", "Inter", sans-serif;
+
+    color: #ffffff;
+    font-size: 30px;
+    letter-spacing: 0px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.short-description {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 1.2;
+  }

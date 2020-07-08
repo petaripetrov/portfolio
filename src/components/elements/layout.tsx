@@ -13,6 +13,7 @@ import '../../styles/global.css'
 type DataProps = {
   children: any
 }
+
 const Layout: React.FC<DataProps> = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
