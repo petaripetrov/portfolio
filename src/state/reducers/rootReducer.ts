@@ -1,6 +1,10 @@
-import {combineReducers} from '@reduxjs/toolkit'
+import { combineReducers } from '@reduxjs/toolkit'
 
-const rootReducer = combineReducers({})
+import carrosselReducer from './carrosselReducer'
+
+const rootReducer = combineReducers({
+    carrossel: carrosselReducer
+})
 
 export type RootState = ReturnType<typeof rootReducer>
 
