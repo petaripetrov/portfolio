@@ -8,6 +8,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
+import '../../styles/global.css'
+
 type DataProps = {
   children: any
 }
