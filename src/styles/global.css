@@ -120,7 +120,7 @@ main{
 }
 
 .icon-selected {
-    opacity: 70%;
+    /* opacity: 70%; */
     pointer-events: none;
 }
 
@@ -130,18 +130,23 @@ main{
 
 @keyframes wiggle {
     0% { 
-        transform: rotate(0deg); 
+        transform: rotate(0deg);
+        opacity: 94%
     }
    25% {
-        transform: rotate(5deg); 
+        transform: rotate(5deg);
+        opacity: 88%; 
     }
    50% {
-        transform: rotate(-5deg); 
+        transform: rotate(-5deg);
+        opacity: 82%; 
     }
    75% {
-        transform: rotate(5deg); 
+        transform: rotate(5deg);
+        opacity: 76%; 
     }
   100% {
-       transform: rotate(0deg); 
+       transform: rotate(0deg);
+       opacity: 70% 
     }
 }
