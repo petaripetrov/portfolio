@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
 import { carrosselState, update } from "../../state/reducers/carrosselReducer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { motion } from "framer-motion"
 
 type IconProps = {
     icon: IconDefinition
@@ -31,7 +32,16 @@ const Icon: React.FC<IconProps> = ({ icon }) => {
     }
 
     return (
-        <FontAwesomeIcon onClick={handleClick} className={`icon ${selected ? "icon-selected" : ""}`} icon={icon} />
+        <motion.div
+            animate={{
+                opacity: selected ? 0.7 : 1,
+            }}
+            whileHover={{
+                rotate: selected ? 0 : [0, -5, 5, -5, 0] 
+            }}
+            >
+            <FontAwesomeIcon onClick={handleClick} className={`icon ${selected ? "icon-selected" : ""}`} icon={icon} />
+        </motion.div>
     )
 }
 
