@@ -19,6 +19,7 @@ main{
     margin:30px;
 
     justify-content: center;
+
 }
 .text-wrapper{
     width: 184px;
@@ -57,10 +58,8 @@ main{
 }
 
 .text-box {
-    /* width: 300px; */
-    /* height: 346px; */
-    width: 1px;
-    height: 1px;
+    width: 0px;
+    height: 0px;
     margin-top: 20px;
     
     overflow: visible;
@@ -118,34 +117,31 @@ main{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow: visible;
-    
-    transition: 1s ease-in-out;
+    overflow: visible;    
 }
 
 .icon-selected {
     pointer-events: none;
 }
 
-.icon:hover {
-    /* animation: wiggle 0.5s; */
-    /* transform: scale(0.80) */
+.background-star{
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    height: 100%;
 }
 
-@keyframes wiggle {
-    0% { 
-        transform: rotate(0deg);
-    }
-   25% {
-        transform: rotate(5deg);
-    }
-   50% {
-        transform: rotate(-5deg);
-    }
-   75% {
-        transform: rotate(5deg);
-    }
-  100% {
-       transform: rotate(0deg);
-    }
+.star {
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 5px;
+  }
+
+.star-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
