@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, MotionTransform, AnimationProps } from "framer-motion"
 
 import { useTypedSelector } from "../../state/createStore"
 
@@ -38,10 +38,18 @@ const TextBox: React.FC = () => {
     }, [current])
 
     return (
-        <motion.div animate={{
-            width: state.width,
-            height: state.height
-        }}
+        <motion.div
+            animate={{
+                width: state.width,
+                height: state.height,
+            }}
+            transition={{
+                type: "spring",
+                delay: 0,
+                stiffness: 500,
+                damping: 60,
+                mass: 1
+            }}
             className="text-box">
             <div className="text">
                 {current}
