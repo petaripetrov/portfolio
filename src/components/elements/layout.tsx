@@ -7,11 +7,41 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { motion } from 'framer-motion'
 
 import '../../styles/global.css'
 
 type DataProps = {
   children: any
+}
+
+const Star: React.FC = () => {
+
+  const variant = {
+    hidden: {
+      left: `${Math.random() * 98}%`,
+      top: `${Math.random() * 98}%`,
+      transition: {
+        type: "spring",
+        delay: 0,
+        stiffness: 500,
+        damping: 60,
+        mass: 1
+      }
+    },
+    active: {
+      opacity: [1, 0, 1],
+      scale: [1, 0, 1],
+      transition: {
+        yoyo: Infinity,
+        repeatDelay: Math.random()
+      }
+    }
+  }
+
+  return (
+    <motion.div variants={variant} initial="hidden" style={{ position: 'absolute' }} animate="active" className="star"></motion.div>
+  )
 }
 
 const Layout: React.FC<DataProps> = ({ children }) => {
@@ -24,11 +54,19 @@ const Layout: React.FC<DataProps> = ({ children }) => {
       }
     }
   `)
+  let items = []
+
+  for (let i = 0; i < 100; i++) {
+    items.push(<Star key={i} />)
+  }
 
   return (
-    <main>
-      {children}
-    </main>
+    <div>
+      {items}
+      <main>
+        {children}
+      </main>
+    </div >
   )
 }
 
