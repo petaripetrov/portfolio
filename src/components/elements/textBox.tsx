@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { motion } from "framer-motion"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { motion, MotionTransform, AnimationProps } from "framer-motion"
 
 import { useTypedSelector } from "../../state/createStore"
 import { graphql, useStaticQuery } from "gatsby"
