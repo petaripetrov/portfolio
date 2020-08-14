@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { CSSProperties, useEffect } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { motion, useAnimatedState } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import '../../styles/global.css'
 
@@ -57,7 +57,7 @@ const Layout: React.FC<DataProps> = ({ children }) => {
   let items = []
 
   for (let i = 0; i < 100; i++) {
-    items.push(<Star />)
+    items.push(<Star key={i} />)
   }
 
   return (
