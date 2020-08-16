@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { graphql, useStaticQuery } from "gatsby"
 import { motion } from "framer-motion"
 import { useMedia } from "react-media"
 
 import { useTypedSelector } from "../../state/createStore"
-import { graphql, useStaticQuery } from "gatsby"
-import { carrosselState } from "../../state/reducers/carrosselReducer"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
-type Props = {
-    current: carrosselState
-}
 
 const TextBox = () => {
+
     const isLargeScreen = useMedia({ query: "(min-width: 768px)" })
     const current = useTypedSelector(state => state.carrossel.current)
     const [state, setState] = useState<textBoxState>({ width: '0', height: '0', x: 0, y: 0, text: { name: "", content: <div /> } })
@@ -37,7 +33,7 @@ const TextBox = () => {
     `)
 
     const repos = data.githubData.data.user.pinnedItems.edges.map((element: any, i: number) => {
-        return (<a href={element.node.url} key={i}>{element.node.name}</a>)
+        return (<li><a href={element.node.url} key={i}>{element.node.name}</a></li>)
     });
 
     useEffect(() => {
@@ -66,24 +62,24 @@ const TextBox = () => {
                 break;
             case "list-alt":
                 setState({
-                    width: isLargeScreen ? "90%" : "100%",
-                    height: "90%",
+                    width: isLargeScreen ? '85%' : '100%',
+                    height: '100%',
                     y: isLargeScreen ? 200 : 0,
                     x: isLargeScreen ? -100 : 0,
                     text: {
                         name: "My Repositories",
                         content: (
-                            <div>
+                            <ul>
                                 {repos}
-                            </div>
+                            </ul>
                         )
                     }
                 })
                 break;
             case "link":
                 setState({
-                    width: isLargeScreen ? '90%' : "100%",
-                    height: "100%",
+                    width: isLargeScreen ? '80%' : '100%',
+                    height: '100%',
                     y: isLargeScreen ? 500 : 0,
                     x: isLargeScreen ? 150 : 0,
                     text: {
@@ -92,7 +88,7 @@ const TextBox = () => {
                             (
                                 <div>
                                     <FontAwesomeIcon icon={faGithub} />
-                                    <a id="github" href="https://github.com/petaripetrov" target="_blank">/petaripetrov</a>
+                                    <a href="https://github.com/petaripetrov" target="_blank">/petaripetrov</a>
                                 </div>
 
                             )

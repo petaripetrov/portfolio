@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction} from "@reduxjs/toolkit"
 
-export type carrosselState = {
-    current: "star" | "id-badge" | "list-alt" | "link"
-}
-
 let initialState: carrosselState = {
     current: "star"
 }
