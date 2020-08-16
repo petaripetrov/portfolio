@@ -58,8 +58,8 @@ main{
 }
 
 .text-box {
-    width: 0px;
-    height: 0px;
+    width: 100%;
+    height: 100%;
     margin-top: 20px;
     
     overflow: visible;
@@ -85,6 +85,7 @@ main{
 
 .subtext {
     overflow: hidden;
+    height: 100%;
 
     font-family: "Inter-SemiBold", "Inter", sans-serif;
     color: #000000;
@@ -152,6 +153,8 @@ main{
     }
 
     .text-box{
+        width: 90%;
+
         grid-column: 2;
         grid-row: 1;
 
