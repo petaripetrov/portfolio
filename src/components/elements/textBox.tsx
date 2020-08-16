@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { graphql, useStaticQuery } from "gatsby"
 import { motion } from "framer-motion"
 import { useMedia } from "react-media"
 
 import { useTypedSelector } from "../../state/createStore"
-import { graphql, useStaticQuery } from "gatsby"
-import { carrosselState } from "../../state/reducers/carrosselReducer"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
-type Props = {
-    current: carrosselState
-}
 
 const TextBox = () => {
-    const isLargeScreen = useMedia({query: "(min-width: 768px)"})
+
+    const isLargeScreen = useMedia({ query: "(min-width: 768px)" })
     const current = useTypedSelector(state => state.carrossel.current)
-    const [state, setState] = useState({ width: 0, height: 0, text: { name: "", content: () => { return <div /> } } })
+    const [state, setState] = useState<textBoxState>({ width: '0', height: '0', x: 0, y: 0, text: { name: "", content: <div /> } })
     const data = useStaticQuery(graphql`
     query MyQuery {
         githubData {
@@ -37,19 +33,21 @@ const TextBox = () => {
     `)
 
     const repos = data.githubData.data.user.pinnedItems.edges.map((element: any, i: number) => {
-        return (<a href={element.node.url} key={i}>{element.node.name}</a>)
+        return (<li><a href={element.node.url} key={i}>{element.node.name}</a></li>)
     });
 
     useEffect(() => {
         switch (current) {
             case "id-badge":
                 setState({
-                    width: isLargeScreen ? 1000 : 300,
-                    height: isLargeScreen  ? 160 : 350,
+                    width: isLargeScreen ? '90%' : '100%',
+                    height: '100%',
+                    x: 0,
+                    y: 0,
                     text: {
                         name: "About me",
-                        content: () => {
-                            return (
+                        content:
+                            (
                                 <div>
                                     I am a new developer doing a bachelor's at Vrije Universiteit Amsterdam.
                                     <br />
@@ -58,53 +56,55 @@ const TextBox = () => {
                                     I have studied Applied Programming as a Professional Diploma(EQF level 4). Web Development is not all im
                                     interested in, I also enjoy hiking and working with microcontrollers.
                                 </div>
-                            )
-                        }
+                            ),
                     }
                 })
                 break;
             case "list-alt":
                 setState({
-                    width: isLargeScreen ? 1000 : 300,
-                    height: 200,
+                    width: isLargeScreen ? '85%' : '100%',
+                    height: '100%',
+                    y: isLargeScreen ? 200 : 0,
+                    x: isLargeScreen ? -100 : 0,
                     text: {
                         name: "My Repositories",
-                        content: () => {
-                            return (
-                                <div>
-                                    {repos}
-                                </div>
-                            )
-                        }
+                        content: (
+                            <ul>
+                                {repos}
+                            </ul>
+                        )
                     }
                 })
                 break;
             case "link":
                 setState({
-                    width: isLargeScreen ? 800 : 300,
-                    height: 200,
+                    width: isLargeScreen ? '80%' : '100%',
+                    height: '100%',
+                    y: isLargeScreen ? 500 : 0,
+                    x: isLargeScreen ? 150 : 0,
                     text: {
                         name: "Links",
-                        content: () => {
-                            return (
+                        content:
+                            (
                                 <div>
                                     <FontAwesomeIcon icon={faGithub} />
-                                    <a id="github" href="https://github.com/petaripetrov" target="_blank">/petaripetrov</a>
+                                    <a href="https://github.com/petaripetrov" target="_blank">/petaripetrov</a>
                                 </div>
 
                             )
-                        }
                     }
                 })
                 break;
 
             default:
                 setState({
-                    width: 0,
-                    height: 0,
+                    width: '0',
+                    height: '0',
+                    x: 0,
+                    y: 0,
                     text: {
-                        name: "About me",
-                        content: () => { return <div /> }
+                        name: "",
+                        content: <div />
                     }
                 })
                 break;
@@ -116,6 +116,8 @@ const TextBox = () => {
             animate={{
                 width: state.width,
                 height: state.height,
+                x: state.x,
+                y: state.y,
             }}
             transition={{
                 type: "spring",
@@ -128,8 +130,9 @@ const TextBox = () => {
             <div className="text">
                 {state.text.name}
             </div>
-            <div className="subtext">
-                {state.text.content()}
+            <div
+            className="subtext">
+                {state.text.content}
             </div>
         </motion.div>
     )
