@@ -63,7 +63,7 @@ const TextBox = () => {
             case "list-alt":
                 setState({
                     width: isLargeScreen ? '85%' : '100%',
-                    height: '100%',
+                    height: '95%',
                     y: isLargeScreen ? 200 : 0,
                     x: isLargeScreen ? -100 : 0,
                     text: {
@@ -79,7 +79,7 @@ const TextBox = () => {
             case "link":
                 setState({
                     width: isLargeScreen ? '80%' : '100%',
-                    height: '100%',
+                    height: '90%',
                     y: isLargeScreen ? 500 : 0,
                     x: isLargeScreen ? 150 : 0,
                     text: {
